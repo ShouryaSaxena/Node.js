@@ -1,7 +1,7 @@
 {
   "name": "express_initials",
   "version": "1.0.0",
-  "description": "initial node package",
+  "description": "This is the initial express learning module.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,14 +10,5 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ShouryaSaxena/Node.js.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ShouryaSaxena/Node.js/issues"
-  },
-  "homepage": "https://github.com/ShouryaSaxena/Node.js#readme"
+  }
 }
