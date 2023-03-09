@@ -9,14 +9,47 @@
 </head>
 
 <body>
+
+    <h2>Adding and displaying Data from/to Database</h2>
     <div class="container">
         <form action="/create" method="post">
             <label>Full Name</label>
             <input type="text" name="studentName" required>
             <label>Roll No</label>
             <input type="number" name="rollno" required>
+            <label>Subjects</label>
+            <input type="text" name="subjects" required>
+            <button type="submit">Submit</button>
+        </form><br>
+        <form action="/getresult" method="get">
+            <button type="submit">See Results</button>
+        </form><br>
+    </div>
+    <br><br>
+
+    <h2>Updating Data in Database</h2>
+
+    <div class="container">
+        <form action="/updateData" method="post">
+            <label>Roll No</label>
+            <input type="number" name="rollno" placeholder="Enter Roll No." required>
+            <label>Full Name</label>
+            <input type="text" name="studentName" placeholder="New Name" required>
+            <label>Subjects</label>
+            <input type="text" name="subjects" placeholder="New Subject" required>
+            <button type="submit">Update</button>
+        </form><br><br>
+
+        <h2>Deleting Data from Database</h2>
+        <form action="/deleteResult" method="post">
+            <label>Roll No</label>
+            <input type="number" name="rollno" placeholder="Enter rollno to delete data" required>
+            <button type="submit">Delete</button>
         </form>
     </div>
+    
+
+    
 </body>
 
 </html>
