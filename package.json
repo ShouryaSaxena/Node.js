@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ShouryaSaxena/Node.js/issues"
   },
-  "homepage": "https://github.com/ShouryaSaxena/Node.js#readme"
+  "homepage": "https://github.com/ShouryaSaxena/Node.js#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
 }
