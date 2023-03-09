@@ -2,7 +2,7 @@
 const resData = require("../data/resultData.js")
 
 const displayForm = (req, res) => {
-    res.render("student-form")
+    res.render("result")
 }
 
 // adding a new student to database

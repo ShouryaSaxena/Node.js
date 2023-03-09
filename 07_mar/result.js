@@ -11,6 +11,8 @@ app.use(express.urlencoded({ extended: true }));  //body parsing middleware with
 
 app.use("/", router); // route to display our data 
 
+app.set("view engine", "ejs");
+
 const mongoose = require("mongoose");
 mongoose.connect(
     "mongodb+srv://Yash:Hello1234@nodebase.79r8the.mongodb.net/nodeBase?retryWrites=true&w=majority"
