@@ -10,8 +10,12 @@ let reserveSchema = new Schema({
         type: String,
         required: true
     },
+    mobile: {
+        type: Number,
+        required: true
+    },
     date: {
-        type: Date,
+        type: String,
         required: true
     },
     table: {

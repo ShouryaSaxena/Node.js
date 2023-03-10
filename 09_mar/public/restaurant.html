@@ -6,8 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Reservation System</title>
-    <link rel="stylesheet" href="/09_mar/views/restaurant.css">
+    <link rel="stylesheet" href="restaurant.css">
+    <script defer src="restaurant.js"></script>
+
 </head>
+
+
 
 <body>
 
@@ -36,6 +40,10 @@
                 <input type="text" placeholder="Name" required name="Name" id="name">
             </div>
             <div class="visitor">
+                <label for="mobile">Mobile Number:</label>
+                <input type="number" placeholder="mobile" required name="mobile" id="mobile">
+            </div>
+            <div class="visitor">
                 <label for="date">Date & Time:</label>
                 <input type="datetime-local" placeholder="Date and time" required name="date" value="" id="slot"
                     onchange="match(this);">
@@ -43,17 +51,11 @@
             <div class="visitor">
                 <label for="table">Select your Table:</label>
                 <select name="table" id="table" onchange="disablingFirst()" required>
-                    <option value="Table-1">Table-1</option>
-                    <option value="Table-2">Table-2</option>
-                    <option value="Table-3">Table-3</option>
-                    <option value="Table-4">Table-4</option>
-                    <option value="Table-5">Table-5</option>
-                    <option value="Table-6">Table-6</option>
                 </select>
             </div>
 
             <div class="visitor">
-                <button type="submit">Book This slot</button>
+                <button type="submit" onclick="confirmBooking()">Book This slot</button>
 
             </div>
 
@@ -61,9 +63,21 @@
                 <p id="output"></p>
             </div>
         </form>
+
+        <!---------------------------------------SHOW BOOKING ---------------------------------------------- -->
+        <button class="button" type="submit" onclick=showBookings(this) style="margin-top: 0px;">Show Bookings</button>
+        <div class="read" id="readDiv">
+            <p id="displayBookings"></p>
+            <button id="hide" class="button" type="submit" onclick=hideBookings(this) style="display: none;">Hide Bookings</button>
+        </div>
+
+        <h2>Deleting Your Booking??</h2><br>
+        <form action="/deleteBooking" method="post">
+            <label>Evter your Mobile Number: </label>
+            <input type="number" name="mobile" placeholder="Plear enter the regestered mobile no." required>
+            <button type="submit">Delete</button>
+        </form><br><br>
     </div>
-
-
 
 
 
