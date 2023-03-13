@@ -70,8 +70,6 @@ const deleteBooking = async (req, res) => {
     return false;
 }
 
-//-----------------------------------Checking data in database-----------------------------------
-
 
 //-----------------Exporting various controle functions (api's) to other js files--------------
 

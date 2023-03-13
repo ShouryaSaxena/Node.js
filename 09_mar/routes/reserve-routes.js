@@ -11,6 +11,4 @@ router.post("/reserve", reserve);
 router.post("/deleteBooking", deleteBooking);
 
 
-
-
 module.exports = router;
