@@ -5,7 +5,7 @@ module.exports = {
     PORT: "1433",
     USER: "sa",
     PASSWORD: "1234",
-    DB: "resultmanagement",
+    DB: "restaurantManagement",
     dialect: "mssql",
     pool: {
       max: 5,                // max number of connection in a pool

@@ -2,7 +2,6 @@
 
 let tables = ["", "Table-1", "Table-2", "Table-3", "Table-4", "Table-5", "Table-6", "Table-7", "Table-8", "Table-9", "Table-10"];
 
-let users = [];
 let table = document.getElementById('table');
 
 
@@ -17,15 +16,14 @@ disablingFirst = () => {
     table.options[0].disabled = true;
 }
 
-users = JSON.parse(localStorage.getItem('userkey'));
-
-
 const match = async(select) => {
 
     const selectedOption = select.value;
-    
 
-    //console.log(selectedOption);
+    const response = await fetch("http://localhost:3000/display");
+    const {data} = await response.json();
+
+    console.log(selectedOption);
     //console.log();
 
     for (let i = 0; i < tables.length; i++) {
@@ -34,18 +32,13 @@ const match = async(select) => {
         }
         table.options[i].disabled = false;
     }
-
-    const response = await fetch("http://localhost:2200/showbookings");
-    const data = await response.json();
-    
-
     if (data != null) {
         for (let i = 0; i < data.length; i++) {
             if (selectedOption === data[i].date) {
                 console.log(selectedOption)
-                console.log(`Slot already booked for ${users[i].table}`);
+                console.log(`Slot already booked for ${data[i].table_No}`);
                 for (let j = 0; j < tables.length; j++) {
-                    if (table.options[j].value === data[i].table) {
+                    if (table.options[j].value === data[i].table_No) {
                         table.options[j].disabled = true;
                     }
                 }
@@ -73,17 +66,18 @@ showBookings = async (p) => {
     readDiv.style.display = "";
     document.getElementById('hide').style.display = "block";
 
-    const response = await fetch("http://localhost:2200/showbookings");
-    const data = await response.json();
+    const response = await fetch("http://localhost:3000/display");
+    const {data} = await response.json();
     console.log(data)
     for (let i = 0; i < data.length; i++) {
-        bookings += `Name: ${data[i].Name}_______Mobile No.: ${data[i].mobile}_______Date: ${data[i].date}_______Table: ${data[i].table} \n\n`;
+        console.log(data[i])
+        bookings += `Name: ${data[i].Name}_______Mobile No.: ${data[i].mobile}_______Date: ${data[i].date}_______Table: ${data[i].table_No} \n\n`;
     }
     console.log(bookings);
-    document.getElementById("displayBookings").innerText = bookings;
+    document.getElementById("display").innerText = bookings;
 }
 
 hideBookings = () =>{
-    document.getElementById("displayBookings").innerText = "";
+    document.getElementById("display").innerText = "";
     document.getElementById("hide").style.display = "none";
 }

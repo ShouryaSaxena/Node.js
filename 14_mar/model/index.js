@@ -22,6 +22,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize =sequelize;
 
-db.student = require("./student.js")(sequelize,Sequelize); 
+db.reserve = require("./reserve.js")(sequelize,Sequelize); 
 
 module.exports = db;
