@@ -17,11 +17,18 @@ const sequelize = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD, {
     },
 });
 
-const db = {};
+sequelize.authenticate()
+.then(() => {
+    console.log("Connected...");
+})
+.catch(error => {
+    console.log(error);
+})
+const student = {};
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+student.Sequelize = Sequelize;
+student.sequelize = sequelize;
 
-db.student = require("./student.js")(sequelize, Sequelize);
+student.student = require("./student.js")(sequelize, Sequelize);
 
-module.exports = db;
+module.exports = student;

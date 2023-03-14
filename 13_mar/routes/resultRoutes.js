@@ -1,12 +1,14 @@
 // creating the route for controller
 const student = require("../controllers/resultController");
+const express = require("express");
+const router = require("express").Router();
 
-let router = require("express").Router();
 
-router.post("/", student.create);
+router.get("/student", student.displayForm);
+router.post("/create",student.create);
 router.get("/find", student.findAll);
-router.put("/:id", student.update);
+router.post("/update", student.update);
 router.post("/delete", student.delete);
-router.delete("/deleteAll", student.deleteAll);
+
 
 module.exports = router;

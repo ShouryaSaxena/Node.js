@@ -1,19 +1,24 @@
 // exporting the student model 
-const Results = require("../model");
+const Results = require("../model/student.js");
 
 // importing the sequelized model
-const Student = Results.results;
+const Student = Results.student;
 
-const Op = Results.Sequelize.Op;
+const displayForm = (req, res) => {
+    res.sendFile("C:/Users/ShouryaSaxena/Node.js/13_mar/public/index.html")
+}
 
 // creating a new student 
 
-exports.create = async (req, res) => {
+const create = async (req, res, next) => {
+    console.log(req)
+    
+    console.log(req.body.studentName);
     if (!req.body.studentName) {
         res.status(400).json({ message: "name cannot be  empty " });
     }
 
-    const student = {
+    let student = {
         rollNo: req.body.rollNo,
         studentName: req.body.studentName,
         subjects: req.body.subjects,
@@ -21,18 +26,15 @@ exports.create = async (req, res) => {
     console.log(student);
 
     Student.create(student)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({ message: `${err} Some Error occured in creating a new student  ` });
-        })
+        return res.status(200).json({student});
+      
 }
 
 
 // find all the students 
 
 exports.findAll =(req,res) => {
+    
     Student.findAll()
         .then(data => {
             res.send({data});
@@ -45,10 +47,10 @@ exports.findAll =(req,res) => {
 // update student 
 
 exports.update = (req,res) => {
-    const id = req.body.roll_number;
+    const id = req.body.rollNo;
     console.log(id);
     Student.update(req.body,{                          // promise returns true if updated 
-        where:{roll_number:id}
+        where:{rollno:id}
     })
     .then(data => {
         res.send({data});
@@ -61,7 +63,7 @@ exports.update = (req,res) => {
 // delete student 
 
 exports.delete = (req,res) => {
-    const roll_number = req.body.roll_number;
+    const roll_number = req.body.rollNo;
     console.log(roll_number)
     Student.destroy({where:{roll_number}})
     .then(data =>{
@@ -87,3 +89,5 @@ exports.deleteAll = (req,res) => {
     })
     
 }
+exports.create = create
+exports.displayForm = displayForm

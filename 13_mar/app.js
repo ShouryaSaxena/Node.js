@@ -17,11 +17,10 @@ app.use(cors(corsOptions));
 app.use("/",router);
 
 app.use(express.urlencoded({extended:true}));
-
+app.use(express.json());
 app.use(express.static(path.join((__dirname,"public"))));
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+
 
 app.get("/",(req,res)=>{
     res.status(200).json({message:"This is the Main Page"});
