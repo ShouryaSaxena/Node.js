@@ -9,7 +9,7 @@ const Op = Results.Sequelize.Op;
 // creating a new student 
 
 exports.create = async (req, res) => {
-    if (!req.body.name) {
+    if (!req.body.studentName) {
         res.status(400).json({ message: "name cannot be  empty " });
     }
 
@@ -30,20 +30,60 @@ exports.create = async (req, res) => {
 }
 
 
-// // find all the students 
+// find all the students 
 
-// exports.findAll = (req, res) => {
+exports.findAll =(req,res) => {
+    Student.findAll()
+        .then(data => {
+            res.send({data});
+        })
+        .catch(err => {
+            res.status(500).send({message:`${err}`});
+        })
+}
 
-// }
+// update student 
 
-// // update student 
+exports.update = (req,res) => {
+    const id = req.body.roll_number;
+    console.log(id);
+    Student.update(req.body,{                          // promise returns true if updated 
+        where:{roll_number:id}
+    })
+    .then(data => {
+        res.send({data});
+    })
+    .catch(err => {
+        res.status(500).send({message:`${err}`});
+    })
+}
 
-// exports.update = (req, res) => {
+// delete student 
 
-// }
+exports.delete = (req,res) => {
+    const roll_number = req.body.roll_number;
+    console.log(roll_number)
+    Student.destroy({where:{roll_number}})
+    .then(data =>{
+        res.send({data});
+    })
+    .catch(err => {
+        res.status(500).send({message:`${err} this is the error`});
+    })
+}
 
-// // delete student 
+// deleting all data 
 
-// exports.delete = (req, res) => {
-
-// }
+exports.deleteAll = (req,res) => {
+    Student.destroy({
+        where:{},
+        truncate:false
+    })
+    .then(data =>{
+        res.send({data});
+    })
+    .catch(err =>{
+        req.send({message:`${err}`});
+    })
+    
+}
