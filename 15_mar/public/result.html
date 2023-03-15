@@ -20,15 +20,19 @@
             <label for="subjects">Subjects: </label>
             <input type="text" name="subjects" required><br><br>
             <label for="myImage">Profile Picture:</label>
-            <input type="file" name="myImage" accept="image/*" placeholder="Upload img"><br><br>
+            <input type="file" id="myImage" name="myImage" accept="image/*" placeholder="Upload img"><br><br>
 
             <button type="submit">Submit</button>
         </form><br>
         <form action="/getresult" method="get">
-            <button type="submit">See Results</button>
+            <button type="submit" id="show">See Results</button>
         </form><br>
     </div>
     <br><br>
+
+    <div class="container" id="image" style="display: none;"></div>
+
+
 
     <h2>Updating Data in Database</h2>
 
@@ -52,7 +56,23 @@
     </div>
 
 
+    <script>
 
+        encodeImageFileURL = () => {
+            img = document.getElementById('myImage').value;
+            console.log(img)
+        }
+
+        var fileUp = document.getElementById('myImage');
+        fileUp.addEventListener("change", function(){
+            encodeImageFileURL();
+        })
+
+        const showImages = () => {
+            document.getElementById('image').style.display = "block";
+            
+        }
+    </script>
 </body>
 
 </html>

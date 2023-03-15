@@ -22,7 +22,7 @@ const get_result = async (req, res) => {
 
 //---------------Adding data to the database-----------------------
 
-const add_Student = async (req, res, next) => {
+const add_Student = async (req, res) => {
     console.log(req);
     const data = {
         studentName: req.body.studentName,

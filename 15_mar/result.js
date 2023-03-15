@@ -4,7 +4,6 @@ const path = require("path");
 const fs = require("fs");
 const port = 1010;
 const mongoose = require("mongoose");
-const multer = require('multer');
 
 
 const router = require("./routes/resultRoutes.js");
