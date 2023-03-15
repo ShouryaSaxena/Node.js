@@ -5,7 +5,7 @@ let Schema = mongoose.Schema;
 
 //----------------------------Defining the schema of the storing data-------------------------
 
-let resultSchema = new Schema({
+let student = new Schema({
     studentName:{
         type:String,
         required:true
@@ -17,9 +17,15 @@ let resultSchema = new Schema({
     subjects:{
         type: String,
         required: true
+    },
+    img:
+    {
+        data: String,
+        contentType: String,
     }
 });
 
+
 //--------------------------Schema sent to Database collection----------------------------------
 
-module.exports= mongoose.model("result",resultSchema);
+module.exports= mongoose.model("student",student);

@@ -1,15 +1,19 @@
 // defining the controller methods 
-const result = require("../model/resultData.js")
+const student = require("../model/resultData.js")
+const path = require("path");
+const upload = require("../middleware/multer.js")
+const fs = require("fs");
+
 
 const displayForm = (req, res) => {
-    res.render("result")
+    res.sendFile("C:/Users/ShouryaSaxena/Node.js/15_mar/public/result.html")
 }
 
 //---------------Displaying all the stored data from the database.-----------------------
 
 const get_result = async (req, res) => {
     try {
-        const results = await result.find();
+        const results = await student.find() ;
         res.json(results);
     } catch (err) {
         res.json({ message: err });
@@ -20,30 +24,28 @@ const get_result = async (req, res) => {
 
 const add_Student = async (req, res, next) => {
     console.log(req);
-    const { studentName, rollno, subjects } = req.body;
-
-    if (studentName?.trim() === "" && isNaN(rollno)) {
-        return res.status(422).json({ message: "Error: Enter valid Data..." })
+    const data = {
+        studentName: req.body.studentName,
+        rollno: req.body.rollno,
+        subjects: req.body.subjects,
+        img: {
+            data: path.join("uploads/" + req.file.filename),
+            contentType: 'image/*',
+        }
     }
 
-    let resultData;
-    try {
-        resultData = new student({
-            studentName,
-            rollno,
-            subjects
-        });
-        resultData.save();
-        console.log(resultData);
-    } catch (err) {
-        return next(err);
+    if (!data.img || data.name?.trim() == "" || isNaN(data.rollno) || data.subjects?.trim() == "") {
+        res.status(500).send({ message: "Invalid Data or Mising Data " });
     }
-
-    if (!result) {
-        res.status(500).json({ messgae: "Error: Couldn't save data..." })
-    }
-
-    return res.status(200).json({ resultData });
+    console.log(data.studentName)
+    await student.create(data)
+        .then(data => {
+            res.status(200).send({ message: "Submitted and Uploaded" });
+        })
+        .catch(err => {
+            console.log(err)
+            res.send({ message: err })
+        })
 }
 
 //---------------Updating the stored data based on rollno.-----------------------
@@ -56,7 +58,7 @@ const updateResult = async (req, res) => {
         return res.status(422).json({ message: "Error: Enter valid data..." })
     }
     let updated;
-    updated = await student.findOneAndUpdate({rollno:rollno}, { studentName, subjects })
+    updated = await student.findOneAndUpdate({ rollno: rollno }, { studentName, subjects })
     console.log(updated);
     return res.status(200).json({ updated });
 }
@@ -64,14 +66,14 @@ const updateResult = async (req, res) => {
 
 //---------------Deleting the stored data based on rollno.-----------------------
 
-const deleteResult = async(req,res)=>{
-    
-    let {rollno} = req.body;
+const deleteResult = async (req, res) => {
+
+    let { rollno } = req.body;
     console.log(rollno);
     let deleted;
-    deleted = await student.deleteOne({rollno:rollno});
+    deleted = await student.deleteOne({ rollno: rollno });
     console.log(deleted);
-    return res.status(200).json({message:"Entry Deleted from the Database. "});
+    return res.status(200).json({ message: "Entry Deleted from the Database. " });
 }
 
 
