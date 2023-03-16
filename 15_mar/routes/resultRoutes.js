@@ -7,10 +7,6 @@ const { displayForm, add_Student, get_result, updateResult, deleteResult } = req
 
 //-----------------Performing CRUD Operations on database--------------------------------
 
-router.get("/uploads/:filename", (req,res) => {
-    console.log(req.params.filename);
-    res.sendFile(__dirname,"../uploads"+req.params.filename);
-})
 
 router.get("/student", displayForm);
 router.get("/getresult", get_result);
