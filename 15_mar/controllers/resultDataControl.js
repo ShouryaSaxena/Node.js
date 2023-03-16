@@ -53,15 +53,6 @@ const add_Student = async (req, res) => {
 
 const updateResult = async (req, res) => {
     console.log(req.body);
-    // const data = {
-    //     studentName: req.body.studentName,
-    //     rollno: req.body.rollNo,
-    //     subjects: req.body.subjects,
-    //     img: {
-    //         data: path.join("uploads/" + req.file.filename),
-    //         contentType: 'image/*',
-    //     }
-    // }
     let updated;
     updated = await student.findOneAndUpdate({ rollno: req.body.rollno }, {
         studentName: req.body.studentName,
