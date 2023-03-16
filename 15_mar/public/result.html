@@ -21,7 +21,7 @@
             <label for="subjects">Subjects: </label>
             <input type="text" name="subjects" required><br><br>
             <label for="myImage">Profile Picture:</label>
-            <input type="file" id="img" name="img" accept="image/*" placeholder="Upload img"><br><br>
+            <input type="file" id="myImage" name="myImage" accept="image/*" placeholder="Upload img"><br><br>
 
             <button type="submit">Submit</button>
             
@@ -46,15 +46,16 @@
     <h2>Updating Data in Database</h2>
 
     <div class="container">
-        <form action="/updateData" method="post">
+        <form action="/updateData" method="post" enctype="multipart/form-data">
             <label>Roll No</label>
             <input type="number" name="rollno" placeholder="Enter Roll No." required>
             <label>Full Name</label>
             <input type="text" name="studentName" placeholder="New Name" required>
             <label>Subjects</label>
-            <input type="text" name="subjects" placeholder="New Subject" required><br>
+            <input type="text" name="subjects" placeholder="New Subject" required>
             <label for="myImage">Profile Picture:</label>
-            <input type="file" id="myImage" name="myImage" accept="image/*" placeholder="Upload img"><br><br>
+            <input type="file" id="updateImg" name="updateImg" accept="image/*" placeholder="Upload img"><br><br>
+
             <button type="submit">Update</button>
         </form><br><br>
 
@@ -66,24 +67,6 @@
         </form>
     </div>
 
-
-    <script>
-
-        encodeImageFileURL = () => {
-            img = document.getElementById('myImage').value;
-            console.log(img)
-        }
-
-        var fileUp = document.getElementById('myImage');
-        fileUp.addEventListener("change", function(){
-            encodeImageFileURL();
-        })
-
-        const showImages = () => {
-            document.getElementById('image').style.display = "block";
-            
-        }
-    </script>
 </body>
 
 </html>

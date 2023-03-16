@@ -35,7 +35,7 @@ const add_Student = async (req, res) => {
         }
     }
 
-    if (data.img == null || data.name?.trim() == "" || isNaN(data.rollno) || data.subjects?.trim() == "") {
+    if (!data.img || data.name?.trim() == "" || isNaN(data.rollno) || data.subjects?.trim() == "") {
         res.status(500).send({ message: "Invalid Data or Mising Data " });
     }
     console.log(data.studentName)
@@ -52,14 +52,26 @@ const add_Student = async (req, res) => {
 //---------------Updating the stored data based on rollno.-----------------------
 
 const updateResult = async (req, res) => {
-    console.log(req);
-    let { studentName, rollno, subjects, img } = req.body;
-    console.log(rollno);
-    if (!img || studentName?.trim() == "" || isNaN(rollno) || subjects?.trim() == "") {
-        return res.status(422).json({ message: "Error: Enter valid data..." })
-    }
+    console.log(req.body);
+    // const data = {
+    //     studentName: req.body.studentName,
+    //     rollno: req.body.rollNo,
+    //     subjects: req.body.subjects,
+    //     img: {
+    //         data: path.join("uploads/" + req.file.filename),
+    //         contentType: 'image/*',
+    //     }
+    // }
     let updated;
-    updated = await student.findOneAndUpdate({ rollno: rollno }, { studentName, subjects ,img})
+    updated = await student.findOneAndUpdate({ rollno: req.body.rollno }, {
+        studentName: req.body.studentName,
+        rollno: req.body.rollno,
+        subjects: req.body.subjects,
+        img: {
+            data: path.join("uploads/" + req.file.filename),
+            contentType: 'image/*',
+        }
+    })
     console.log(updated);
     return res.status(200).json({ updated });
 }

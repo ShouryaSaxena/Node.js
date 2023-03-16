@@ -6,8 +6,7 @@ const showImage = async() => {
 
     let response = await fetch(url);
     let {results} = await response.json();
-    console.log(results);
-
+    profileImg.innerHTML = ""
     for(let i=0;i<results.length;i++){
         profileImg.innerHTML += `<img src="${results[i].img.data}" alt="${results[i].studentName}" style="width:200px; height:200px">`;
     }
