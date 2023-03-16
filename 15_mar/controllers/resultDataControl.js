@@ -13,8 +13,9 @@ const displayForm = (req, res) => {
 
 const get_result = async (req, res) => {
     try {
-        const results = await student.find() ;
-        res.json(results);
+        const results = await student.find();
+        res.status(200).json({ results })
+        return false;
     } catch (err) {
         res.json({ message: err });
     }
