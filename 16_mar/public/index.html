@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js" defer></script>
+    <title>Result Management System</title>
+</head>
+
+<body>
+
+    <h2>Adding and displaying Data from/to Database</h2>
+    <div class="container">
+        <form action="/create" method="post" enctype="multipart/form-data">
+            <label for="studentName">Full Name: </label>
+            <input type="text" name="studentName" required><br><br>
+            <label for="rollno">Roll No: </label>
+            <input type="number" name="rollno" required><br><br>
+            <label for="subjects">Subjects: </label>
+            <input type="text" name="subjects" required><br><br>
+            <label for="myImage">Profile Picture:</label>
+            <input type="file" id="myImage" name="myImage" accept="image/*" placeholder="Upload img"><br><br>
+
+            <button type="submit">Submit</button>
+            
+        </form><br>
+        <div class="imagecontainer">
+            <button type="submit" onclick="showImage()">Show Saved Profiles</button>
+    
+            <div id="savedProfiles">
+        
+            </div>
+        </div><br><br>
+        <form action="/getresult" method="get">
+            <button type="submit" id="show">See Results</button>
+        </form><br>
+    </div>
+    <br><br>
+
+    
+
+
+
+    <h2>Updating Data in Database</h2>
+
+    <div class="container">
+        <form action="/updateData" method="post" enctype="multipart/form-data">
+            <label>Roll No</label>
+            <input type="number" name="rollno" placeholder="Enter Roll No." required>
+            <label>Full Name</label>
+            <input type="text" name="studentName" placeholder="New Name" required>
+            <label>Subjects</label>
+            <input type="text" name="subjects" placeholder="New Subject" required>
+            <label for="myImage">Profile Picture:</label>
+            <input type="file" id="updateImg" name="updateImg" accept="image/*" placeholder="Upload img"><br><br>
+
+            <button type="submit">Update</button>
+        </form><br><br>
+
+        <h2>Deleting Data from Database</h2>
+        <form action="/deleteResult" method="post">
+            <label>Roll No</label>
+            <input type="number" name="rollno" placeholder="Enter rollno to delete data" required>
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
