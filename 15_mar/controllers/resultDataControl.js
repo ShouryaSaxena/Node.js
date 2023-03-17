@@ -66,7 +66,7 @@ const findByID = async(req, res) => {
 const updateResult = async (req, res) => {
     console.log(req.body);
     let updated;
-    updated = await student.findOneAndUpdate({ rollno: req.body.rollno }, {
+    updated = await student.findOneAndUpdate({ id: data.id }, {
         studentName: req.body.studentName,
         rollno: req.body.rollno,
         subjects: req.body.subjects,
