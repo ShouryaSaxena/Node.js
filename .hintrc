@@ -23,7 +23,9 @@
       "default",
       {
         "ignore": [
-          "width: fit-content"
+          "width: fit-content",
+          "min-height: fit-content",
+          "height: fit-content"
         ]
       }
     ]

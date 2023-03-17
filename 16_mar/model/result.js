@@ -1,6 +1,5 @@
 // creating the model for student database 
 
-//const { sequelize } = require(".");
 
 module.exports = (sequelize,Sequelize) =>{
     const Student = sequelize.define("result",{

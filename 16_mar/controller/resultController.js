@@ -11,9 +11,6 @@ const Op = db.Sequelize.Op;      // for using the operators of sql
 // creating a new student 
 
 exports.create =(req,res)=>{
-    if(!req.body.studentName){
-        res.status(400).json({message:"name cannot be  empty "});
-    }
     const imgName = req.file.filename;
 
     const student = {
@@ -51,7 +48,7 @@ exports.findAll =(req,res) => {
 exports.update = (req,res) => {
     const id = req.body.rollno;
     console.log(id);
-    Student.update(req.body,{                          // promise returns true if updated 
+    Student.update(studentName,{                          // promise returns true if updated 
         where:{rollno:id}
     })
     .then(data => {

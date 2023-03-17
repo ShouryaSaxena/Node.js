@@ -10,8 +10,9 @@ const controller = require("../controllers/resultDataControl")
 
 router.get("/student", controller.displayForm);
 router.get("/getresult",controller.get_result);
+router.get("/:id", controller.findByID)
 router.post("/create", upload.single("myImage"), controller.add_Student);
-router.post("/updateData",upload.single("updateImg"), controller.updateResult);
+router.post("/updateData",upload.single("myImage"), controller.updateResult);
 router.post("/deleteResult", controller.deleteResult);
 
 

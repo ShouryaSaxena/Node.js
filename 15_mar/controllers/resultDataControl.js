@@ -3,10 +3,11 @@ const student = require("../model/resultData.js")
 const path = require("path");
 const upload = require("../middleware/multer.js")
 const fs = require("fs");
+let alert = require("alert");
 
 
 const displayForm = (req, res) => {
-    res.sendFile("C:/Users/ShouryaSaxena/Node.js/15_mar/public/result.html")
+    res.sendFile("C:/Users/ShouryaSaxena/Node.js/15_mar/public/index.html")
 }
 
 //---------------Displaying all the stored data from the database.-----------------------
@@ -15,7 +16,6 @@ const get_result = async (req, res) => {
     try {
         const results = await student.find();
         res.status(200).json({ results })
-        return false;
     } catch (err) {
         res.json({ message: err });
     }
@@ -36,18 +36,30 @@ const add_Student = async (req, res) => {
     }
 
     if (!data.img || data.name?.trim() == "" || isNaN(data.rollno) || data.subjects?.trim() == "") {
-        res.status(500).send({ message: "Invalid Data or Mising Data " });
+        res.status(500).send({ message: "Invalid Data or Missing Data " });
     }
     console.log(data.studentName)
     await student.create(data)
         .then(data => {
-            res.status(200).send({ message: "Submitted and Uploaded" });
+            alert("Student Data Saved.")
+            res.sendFile("C:/Users/ShouryaSaxena/Node.js/15_mar/public/index.html")
+            return false;
         })
         .catch(err => {
             console.log(err)
             res.send({ message: err })
         })
 }
+
+//---------------FindByID----------------
+
+const findByID = async(req, res) => {
+    const Data = req.params.id;
+    const data= await student.findById(Data);
+    res.send({data});
+}
+
+
 
 //---------------Updating the stored data based on rollno.-----------------------
 
@@ -88,3 +100,4 @@ exports.get_result = get_result;
 exports.displayForm = displayForm;
 exports.updateResult = updateResult;
 exports.deleteResult = deleteResult;
+exports.findByID = findByID;
