@@ -5,12 +5,12 @@ const express = require("express");
 const cors = require("cors");       // cors stand for cross origin resource sharing 
 const router = require("./route/resultRoutes.js")
 const db = require("./model");
-const app =express();
-const path =require("path");
+const app = express();
+const path = require("path");
 db.sequelize.sync();
 
 let corsOptions = {
-    origin:"http://localhost:2000"                   // setting up origin to 5000
+    origin:"http://localhost:2000"                   // setting up origin to 2000
 };
 
 app.use(express.static(path.join((__dirname,"public"))));  // run the html static file on browser
@@ -20,7 +20,6 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
 
 app.get("/",(req,res)=>{
     res.status(200).json({message:"welcome to the page "});
