@@ -3,7 +3,7 @@ const user = require("../model/reserveData.js")
 const router = require("../routes/reserve-routes.js")
 
 const displayForm = (req, res) => {
-    res.sendFile("C:/Users/ShouryaSaxena/Node.js/09_mar/public/restaurant.html")
+    res.sendFile("/Users/shouryasaxena/Desktop/Node.js/09_mar/public/restaurant.html")
 }
 
 //---------------Displaying all the stored data from the database.-----------------------

@@ -7,7 +7,7 @@ let alert = require("alert");
 
 
 const displayForm = (req, res) => {
-    res.sendFile("C:/Users/ShouryaSaxena/Node.js/15_mar/public/index.html")
+    res.sendFile("/Users/shouryasaxena/Desktop/Node.js/15_mar/public/index.html")
 }
 
 //---------------Displaying all the stored data from the database.-----------------------
@@ -42,7 +42,7 @@ const add_Student = async (req, res) => {
     await student.create(data)
         .then(data => {
             alert("Student Data Saved.")
-            res.sendFile("C:/Users/ShouryaSaxena/Node.js/15_mar/public/index.html")
+            res.sendFile("C:/Users/ShouryaSaxena/Node.15_mar/15_mar/public/index.html")
             return false;
         })
         .catch(err => {

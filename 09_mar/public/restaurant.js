@@ -68,7 +68,7 @@ const confirmBooking = () => {
 }
 
 
-showBookings = async (p) => {
+showBookings = async () => {
     let bookings = "";
     readDiv.style.display = "";
     document.getElementById('hide').style.display = "block";

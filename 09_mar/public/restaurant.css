@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url("C:/Users/ShouryaSaxena/Node.js/09_mar/public/images/pexels-chan-walrus-941861.jpg");
+    background-image: url("/Users/shouryasaxena/Desktop/Node.js/09_mar/public/images/pexels-chan-walrus-941861.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
