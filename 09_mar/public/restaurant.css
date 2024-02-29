@@ -1,0 +1,131 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("/Users/shouryasaxena/Desktop/Node.js/09_mar/public/images/pexels-chan-walrus-941861.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#navbar ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    background-color: rgba(0, 0, 0, 0.556);
+    margin: 0px;
+    padding: 0.7rem;
+    gap: 10%;
+}
+
+@media screen and (max-width: 800px) {
+    body #navbar ul {
+        display: block;
+    }
+}
+
+body #navbar ul li {
+    padding: 0.5rem;
+}
+
+body #navbar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+body #navbar ul li:hover {
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    position: relative;
+    font-size: 2rem;
+    box-shadow: 0px 5px 5px 5px rgba(255, 255, 255, 0.41);
+}
+
+body #navbar ul li:hover a {
+    text-decoration: none;
+    color: #000;
+    font-size: 2rem;
+}
+
+.container {
+    width: 70%;
+    justify-content: center;
+    text-align: center;
+    padding-top: 6rem;
+    margin: auto;
+    color: aliceblue;
+
+}
+
+.container h1 {
+    font-size: 6rem;
+}
+
+.text {
+    margin-top: 2rem;
+    font-size: 2rem;
+    line-height: 150%;
+}
+
+#details {
+    width: 90%;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.visitor {
+    margin-top: 0.5rem;
+}
+
+.visitor input {
+    width: 50%;
+    height: 2rem;
+    border-radius: 3rem;
+    text-align: center;
+}
+
+.visitor select {
+    font-size: 1rem;
+    padding: 0.2rem;
+    margin-left: 1rem;
+}
+
+#output {
+    background-color: rgba(0, 0, 0, 0.682);
+    width: 80%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
+    line-height: 175%;
+}
+
+h2{
+    color: rgb(0, 255, 255);
+    font-size: 2rem;
+}
+
+#displayBookings{
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    text-align: left;
+    font-weight: 5rem;
+    line-height: 150%;
+}
+
+button{
+    font-size: 1.2rem;
+    padding: 0.2rem;
+    box-shadow: 0px 2px 2px 2px inset #000000bc;
+}

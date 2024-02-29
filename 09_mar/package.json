@@ -1,0 +1,28 @@
+{
+  "name": "restaurant_app",
+  "version": "1.0.0",
+  "description": "This is the Restaurant Reservation App.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon restaurant.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShouryaSaxena/Node.js.git"
+  },
+  "author": "Shourya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShouryaSaxena/Node.js/issues"
+  },
+  "homepage": "https://github.com/ShouryaSaxena/Node.js#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}

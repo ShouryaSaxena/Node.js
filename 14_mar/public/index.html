@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="restaurant.css">
+    <script defer src="restaurant.js"></script>
+
+</head>
+
+
+
+<body>
+
+    <!---------------------------------------- Navbar ------------------------------------------------>
+
+    <nav id="navbar">
+        <ul>
+            <li><a class="point" href="#">Menu</a></li>
+            <li><a href="#">Country Delight Exotic</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!---------------------------------------Booking a table--------------------------------------  -->
+
+    <div class="container">
+        <h1 class="w3-center w3-jumbo">Country Delight :)</h1>
+        <p class="text">We're greateful to have offer Best Ambience, Feel, The Best Taste to make you & your Tummy HAPPY
+            :)</p>
+
+        <p class="text"><strong>Reserve</strong> a table, ask for today's special or just send us a message:
+        </p>
+        <form class="form" action="/reserve" method="post">
+            <div class="form-group row justify-content-center">
+                <label for="Name" class="col-sm-2 col-form-label">Your Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext" id="name" placeholder="Name" name="Name">
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label for="mobile" class="col-sm-2 col-form-label">Mobile Number:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext" type="number" placeholder="mobile" required name="mobile" id="mobile">
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-center">
+                <label for="date" class="col-sm-2 col-form-label">Date & Time:</label>
+                <div class="col-sm-10">
+                    <input class="form-control-plaintext" type="datetime-local" placeholder="Date and time" required name="date"
+                    value="" id="slot" onchange="match(this);">
+                </div>
+            </div>
+           
+            <div class="form-group row justify-content-center">
+                <label for="date" class="col-sm-2 col-form-label">Select Table:</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="table" id="table" onchange="disablingFirst()" required>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="form-group row justify-content-center">
+                <button type="submit" onclick="confirmBooking()">Book This slot</button>
+            </div>
+            <div class="form-group row justify-content-center">
+                <p id="output"></p>
+            </div>
+
+        </form>
+
+        <!---------------------------------------SHOW BOOKING ---------------------------------------------- -->
+        <button class="button" type="submit" onclick=showBookings(this) style="margin-top: 0px;">Show Bookings</button>
+        <div class="read" id="readDiv">
+            <p id="display"></p>
+            <button id="hide" class="button" type="submit" onclick=hideBookings(this) style="display: none;">Hide
+                Bookings</button>
+        </div>
+
+        <h2>Deleting Your Booking??</h2><br>
+        <form action="/deleteBooking" method="post">
+            <label>Evter your Mobile Number: </label>
+            <input type="number" name="mobile" placeholder="Plear enter the regestered mobile no." required>
+            <button type="submit">Delete</button>
+        </form><br><br>
+    </div>
+
+
+
+</body>

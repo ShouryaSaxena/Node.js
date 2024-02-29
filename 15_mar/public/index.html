@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Management System</title>
+    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+    <!-------------------------------------------Header----------------------------------------->
+    <header class="head">
+        <h1>Result Management System</h1>
+    </header>
+
+    <!----------------------------------------Form Body----------------------------------------->
+
+    <div class="button-collection">
+        <button class="submit" type="submit" onclick="addStudent()">Add New Student</button>
+        <button class="submit" type="submit" onclick="showImage()">Show Saved Profiles</button>
+        <button class="submit" type="submit" onclick="getStudentDetails()">Enrolled Student's List</button>
+    </div><br><br>
+
+    <div id="showForm">
+        <form id="form" action="/create" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend id="legend"><b>Add Student Details: </b></legend>
+    
+                <label for="studentName">Full Name: </label>
+                <input class="input" type="text" name="studentName" required><br><br>
+                <label for="rollno">Roll No: </label>
+                <input class="input" type="number" name="rollno" required><br><br>
+                <label for="subjects">Subjects: </label>
+                <input class="input" type="text" name="subjects" required><br><br>
+                <label for="myImage">Profile:</label>
+                <input class="input" type="file" id="myImage" name="myImage" accept="image/*" placeholder="Upload img" required><br><br>
+    
+                <button id="add" type="submit" class="submit">Submit</button>
+                <button id="update" type="submit" class="submit" style="display: none;" formaction="/updateData">Update</button>
+    
+            </fieldset>
+        </form>
+    </div>
+
+    <div id="imageContainer">Saved Profiles
+        <div id="savedProfiles">
+        </div>
+    </div><br><br>
+
+    <div id="showAllData">
+        <p id="studentDetails"></p>
+    </div><br><br>
+
+</body>
+
+</html>

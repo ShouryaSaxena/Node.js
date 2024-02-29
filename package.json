@@ -9,7 +9,9 @@
   "author": "Shourya",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "tedious": "^15.1.3"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/ShouryaSaxena/Node.js/issues"
   },
-  "homepage": "https://github.com/ShouryaSaxena/Node.js#readme"
+  "homepage": "https://github.com/ShouryaSaxena/Node.js#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
 }
